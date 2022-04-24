@@ -1,12 +1,16 @@
 [tool.poetry]
-name = "ml-intro-2022-9"
+name = "ml_intro_2022_9"
 version = "0.1.0"
 description = ""
 authors = ["Feosen <iva588@yandex.ru>"]
 
+[tool.poetry.scripts]
+train = "ml_intro_2022_9.train:train"
+
 [tool.poetry.dependencies]
 python = "^3.10"
 numpy = "^1.22.3"
+click = "^8.1.2"
 
 [tool.poetry.dev-dependencies]
 
