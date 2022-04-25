@@ -5,7 +5,7 @@
 This package allows you to train model for house price prediction.
 1. Clone this repository to your machine.
 2. Download [Melbourne housing dataset](https://www.kaggle.com/anthonypino/melbourne-housing-market) dataset, save csv locally (default path is *data/heart.csv* in repository's root).
-3. Make sure Python 3.10 and [Poetry](https://python-poetry.org/docs/) are installed on your machine (I use Poetry 1.1.13).
+3. Make sure Python 3.9 and [Poetry](https://python-poetry.org/docs/) are installed on your machine (I use Poetry 1.1.13).
 4. Install the project dependencies (*run this and following commands in a terminal, from the root of a cloned repository*):
 ```sh
 poetry install --no-dev
