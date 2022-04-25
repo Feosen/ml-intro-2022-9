@@ -7,7 +7,7 @@ import click
 @click.option(
     "-d",
     "--dataset-path",
-    default="data/heart.csv",
+    default="data/train.csv",
     type=click.Path(exists=True, dir_okay=False, path_type=Path),
     show_default=True,
 )
