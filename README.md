@@ -30,6 +30,11 @@ poetry run mlflow ui
 ```sh
 exit
 ```
+## EDA
+Run EDA creation with the following command:
+```sh
+poetry run eda -d <path to csv with data> -s <path to save eda.html>
+```
 
 ## Development
 
