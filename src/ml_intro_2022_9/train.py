@@ -2,7 +2,7 @@ from pathlib import Path
 from joblib import dump  # type: ignore
 
 import click
-from sklearn.metrics import accuracy_score  # type: ignore
+from sklearn.metrics import accuracy_score, f1_score  # type: ignore
 
 from .data import get_dataset
 from .pipeline import create_pipeline
@@ -55,7 +55,12 @@ def train(
     )
     pipeline = create_pipeline(n_neighbors=n_neighbors)
     pipeline.fit(features_train, target_train)
-    accuracy = accuracy_score(target_val, pipeline.predict(features_val))
+    predict_val = pipeline.predict(features_val)
+    accuracy = accuracy_score(target_val, predict_val)
     click.echo(f"Accuracy: {accuracy}.")
+    f1_micro = f1_score(target_val, predict_val, average="micro")
+    click.echo(f"F1 micro: {f1_micro}.")
+    f1_macro = f1_score(target_val, predict_val, average="macro")
+    click.echo(f"F1 macro: {f1_macro}.")
     dump(pipeline, save_model_path)
     click.echo(f"Model is saved to {save_model_path}.")
