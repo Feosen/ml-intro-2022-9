@@ -14,12 +14,12 @@ def runner() -> CliRunner:
 
 def test_success(runner: CliRunner) -> None:
     """Checks successful file creation."""
-    with open("tests/train.csv", 'r') as data_file:
+    with open("tests/train.csv", "r") as data_file:
         data = data_file.read()
 
     with runner.isolated_filesystem():
         data_file_name = Path("train.csv")
-        with open(data_file_name, 'w') as data_file:
+        with open(data_file_name, "w") as data_file:
             data_file.write(data)
         eda_file_name = Path("test_eda.html")
         result = runner.invoke(
