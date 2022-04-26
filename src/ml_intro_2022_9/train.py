@@ -1,8 +1,8 @@
 from pathlib import Path
-from joblib import dump
+from joblib import dump  # type: ignore
 
 import click
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score  # type: ignore
 
 from .data import get_dataset
 from .pipeline import create_pipeline

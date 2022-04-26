@@ -2,8 +2,8 @@ from pathlib import Path
 from typing import Tuple
 
 import click
-import pandas as pd
-from sklearn.model_selection import train_test_split
+import pandas as pd  # type: ignore
+from sklearn.model_selection import train_test_split  # type: ignore
 
 
 def get_dataset(
