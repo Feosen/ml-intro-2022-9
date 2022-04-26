@@ -1,8 +1,9 @@
 from pathlib import Path
-from joblib import dump  # type: ignore
 
 import click
-from sklearn.metrics import accuracy_score, f1_score  # type: ignore
+import numpy as np
+from joblib import dump  # type: ignore
+from sklearn.model_selection import cross_validate  # type: ignore
 
 from .data import get_dataset
 from .pipeline import create_pipeline
@@ -30,9 +31,9 @@ from .pipeline import create_pipeline
     show_default=True,
 )
 @click.option(
-    "--test-split-ratio",
-    default=0.2,
-    type=click.FloatRange(0, 1, min_open=True, max_open=True),
+    "--cv",
+    default=5,
+    type=click.IntRange(0, min_open=True),
     show_default=True,
 )
 @click.option(
@@ -45,22 +46,25 @@ def train(
     dataset_path: Path,
     save_model_path: Path,
     random_state: int,
-    test_split_ratio: float,
+    cv: int,
     n_neighbors: int,
 ) -> None:
-    features_train, features_val, target_train, target_val = get_dataset(
-        dataset_path,
-        random_state,
-        test_split_ratio,
-    )
+    features, target = get_dataset(dataset_path, random_state)
     pipeline = create_pipeline(n_neighbors=n_neighbors)
-    pipeline.fit(features_train, target_train)
-    predict_val = pipeline.predict(features_val)
-    accuracy = accuracy_score(target_val, predict_val)
-    click.echo(f"Accuracy: {accuracy}.")
-    f1_micro = f1_score(target_val, predict_val, average="micro")
-    click.echo(f"F1 micro: {f1_micro}.")
-    f1_macro = f1_score(target_val, predict_val, average="macro")
-    click.echo(f"F1 macro: {f1_macro}.")
+    scoring = ["accuracy", "f1_micro", "f1_macro"]
+    results = cross_validate(
+        pipeline,
+        features,
+        target,
+        cv=cv,
+        n_jobs=-1,
+        return_train_score=True,
+        scoring=scoring,
+    )
+    for score_name in scoring:
+        for data_type in ("train", "test"):
+            score_value = np.mean(results[f"{data_type}_{score_name}"])
+            click.echo(f"{score_name} {data_type:5}: {score_value:.4f}")
+    pipeline.fit(features, target)
     dump(pipeline, save_model_path)
     click.echo(f"Model is saved to {save_model_path}.")

@@ -49,6 +49,8 @@ def test_success(runner: CliRunner) -> None:
                 model_file_name,
                 "--n-neighbors",
                 2,
+                "--cv",
+                2,
             ],
         )
         assert f"Model is saved to {model_file_name}." in result.output
