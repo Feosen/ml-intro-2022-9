@@ -13,7 +13,7 @@ def runner() -> CliRunner:
 
 
 def test_success(runner: CliRunner) -> None:
-    """Checks successful file creation"""
+    """Checks successful file creation."""
     with open("tests/train.csv", 'r') as data_file:
         data = data_file.read()
 
@@ -33,6 +33,6 @@ def test_success(runner: CliRunner) -> None:
                 "Test title",
             ],
         )
-        assert f"EDA saved to {eda_file_name}." in result.output
+        assert f"EDA is saved to {eda_file_name}." in result.output
         with open(eda_file_name, "r") as file:
             assert "<title>Test title</title>" in file.read()

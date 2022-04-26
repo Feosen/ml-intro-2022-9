@@ -11,7 +11,7 @@ def runner() -> CliRunner:
 
 
 def test_always_error(runner: CliRunner) -> None:
-    """It fails when test split ratio is greater than 1."""
+    """It fails when random state has wrong data type."""
     result = runner.invoke(
         train,
         [

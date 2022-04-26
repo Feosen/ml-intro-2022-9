@@ -41,4 +41,4 @@ def create_eda(
     data = pd.read_csv(dataset_path)
     profile = ProfileReport(data, title=title, explorative=explorative)
     profile.to_file(save_eda_path)
-    click.echo(f"EDA saved to {save_eda_path}.")
+    click.echo(f"EDA is saved to {save_eda_path}.")
