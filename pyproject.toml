@@ -16,6 +16,7 @@ click = "^8.1.2"
 pandas = "<1.4"
 pandas-profiling = "^3.1.0"
 sklearn = "^0.0"
+mlflow = "^1.25.1"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"

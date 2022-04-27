@@ -1,4 +1,5 @@
 from pathlib import Path
+from unittest import mock
 
 from click.testing import CliRunner
 import pytest
@@ -40,19 +41,24 @@ def test_success(runner: CliRunner) -> None:
         with open(data_file_name, "w") as data_file:
             data_file.write(data)
         model_file_name = Path("model.joblib")
-        result = runner.invoke(
-            train,
-            [
-                "--dataset-path",
-                data_file_name,
-                "--save-model-path",
-                model_file_name,
-                "--n-neighbors",
-                2,
-                "--cv",
-                2,
-            ],
-        )
+
+        with mock.patch(
+            "ml_intro_2022_9.train.get_git_revision_hash",
+            lambda: "ed664c85a14907406257a3218c985d2d48b70de0",
+        ):
+            result = runner.invoke(
+                train,
+                [
+                    "--dataset-path",
+                    data_file_name,
+                    "--save-model-path",
+                    model_file_name,
+                    "--n-neighbors",
+                    2,
+                    "--cv",
+                    2,
+                ],
+            )
         assert f"Model is saved to {model_file_name}." in result.output
         model = load(model_file_name)
         assert isinstance(model, Pipeline)

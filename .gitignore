@@ -18,7 +18,8 @@ coverage.xml
 *.cover
 *.py,cover
 .hypothesis/
-.pytest_cache/
+.pytest_cache
+.mypy_cache
 
 # IPython
 profile_default/
@@ -40,3 +41,4 @@ venv.bak/
 
 # Project exclude paths
 /data/
+mlruns
