@@ -4,7 +4,7 @@ from typing import List
 
 import click
 import mlflow  # type: ignore
-import numpy as np  # type: ignore
+import numpy as np
 from joblib import dump  # type: ignore
 from sklearn.model_selection import cross_validate  # type: ignore
 
