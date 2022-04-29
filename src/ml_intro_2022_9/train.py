@@ -80,7 +80,7 @@ def train(
         elif model_name == ModelName.random_forest.value:
             pipeline = create_rf_pipeline()
 
-        scoring = ["accuracy", "f1_micro", "f1_macro"]
+        scoring = ["f1_weighted", "f1_micro", "f1_macro"]
         results = cross_validate(
             pipeline,
             features,
