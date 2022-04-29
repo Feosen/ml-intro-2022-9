@@ -59,6 +59,6 @@ def test_success(runner: CliRunner) -> None:
                     2,
                 ],
             )
-        assert f"Model is saved to {model_file_name}." in result.output
+        assert f"Model is saved to 2 {model_file_name}." in result.output
         model = load(model_file_name)
         assert isinstance(model, Pipeline)
