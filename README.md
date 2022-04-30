@@ -70,7 +70,8 @@ I had to run experiments on reduced dataset because of hardware limitation. I th
 
 ### Task 9
 
-**TODO**
+![MLflow](docs/images/nested-cv-mlflow.png)
+![Terminal](docs/images/nested-cv-terminal.png)
 
 ### Task 10
 This Readme.

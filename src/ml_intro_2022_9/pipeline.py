@@ -34,8 +34,8 @@ def _create_data_transformer() -> BaseEstimator:
 def create_knn_pipeline(
     n_neighbors: int,
     n_estimators: int,
-    max_samples: Union[int, float],
     max_features: Union[int, float],
+    random_state: int,
 ) -> Pipeline:
     """Build KNN pipline."""
 
@@ -46,23 +46,23 @@ def create_knn_pipeline(
     meta_clf = BaggingClassifier(
         clf,
         n_estimators=n_estimators,
-        max_samples=max_samples,
         max_features=max_features,
+        random_state=random_state,
         n_jobs=-1,
     )
 
     pipeline_steps = (
-        ("transformer", transformer),
-        ("classifier", meta_clf),
+        ("trf", transformer),
+        ("clf", meta_clf),
     )
     return Pipeline(steps=pipeline_steps)
 
 
-def create_rf_pipeline(
+def create_tree_pipeline(
     n_estimators: int,
     max_depth: Union[None, int],
-    min_samples_split: Union[int, float],
-    min_samples_leaf: Union[int, float],
+    criterion: str,
+    random_state: int,
 ) -> Pipeline:
     """Build Random Forest pipline"""
 
@@ -71,13 +71,13 @@ def create_rf_pipeline(
     meta_clf = RandomForestClassifier(
         n_estimators=n_estimators,
         max_depth=max_depth,
-        min_samples_split=min_samples_split,
-        min_samples_leaf=min_samples_leaf,
+        criterion=criterion,
         n_jobs=-1,
+        random_state=random_state,
     )
 
     pipeline_steps = (
-        ("transformer", transformer),
-        ("classifier", meta_clf),
+        ("trf", transformer),
+        ("clf", meta_clf),
     )
     return Pipeline(steps=pipeline_steps)
