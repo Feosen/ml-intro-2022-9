@@ -11,8 +11,8 @@ def get_dataset(
 ) -> Tuple[pd.DataFrame, pd.Series]:
     dataset = pd.read_csv(csv_path)
     click.echo(f"Dataset shape: {dataset.shape}.")
-    features = dataset.drop("Cover_Type", axis=1)
     target = dataset["Cover_Type"]
+    features = dataset.drop(columns=["Id", "Cover_Type"])
     # I need to reduce amount of data because of hardware limitation.
     # It's learning task, not commercial.
     if data_size < 1:

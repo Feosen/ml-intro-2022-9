@@ -64,7 +64,9 @@ Cross-validation and 3 metrics provided [here](https://github.com/Feosen/ml-intr
 
 ### Task 8
 
-**In progess**
+I had to run experiments on reduced dataset because of hardware limitation. I think it is better than nothing (for study task).
+
+![Manual hyperparameters](docs/images/manual-hyperparameters.png)
 
 ### Task 9
 
