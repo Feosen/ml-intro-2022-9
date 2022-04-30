@@ -52,3 +52,45 @@ More conveniently, to run all sessions of testing and formatting in a single com
 ```
 tox
 ```
+
+## Tasks
+
+### Task 1-6
+This git.
+
+### Task 7
+Cross-validation and 3 metrics provided [here](https://github.com/Feosen/ml-intro-2022-9/tree/ed664c85a14907406257a3218c985d2d48b70de0).
+*Note*: duplicated metric was replaced [here](https://github.com/Feosen/ml-intro-2022-9/commit/914a8fd81e560811deae2cc7924c96ef549dd27f).
+
+### Task 8
+
+**In progess**
+
+### Task 9
+
+**TODO**
+
+### Task 10
+This Readme.
+
+### Task 11
+Using ```--disable-warnings``` because of pandas-profiling.
+
+![pytest](docs/images/pytest.png)
+
+### Task 12
+
+![black-flake8](docs/images/black-flake8.png)
+
+### Task 13
+
+![mypy](docs/images/mypy.png)
+
+### Task 14
+Screenshot is very big because I don't supress warnings and other info in tox configuration, so here is short version.
+Full screenshot provided [here](docs/images/tox-full.png).
+
+![tox-short](docs/images/tox-short.png)
+
+### Task 15
+Don't miss [Actions](https://github.com/Feosen/ml-intro-2022-9/actions), please.
