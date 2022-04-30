@@ -38,6 +38,12 @@ class ModelName(Enum):
     show_default=True,
 )
 @click.option(
+    "--data-size",
+    default=1,
+    type=click.FloatRange(0, 1, min_open=True),
+    show_default=True,
+)
+@click.option(
     "-m",
     "--model-name",
     default="knn",
@@ -101,6 +107,7 @@ class ModelName(Enum):
 def train(
     dataset_path: Path,
     save_model_path: Path,
+    data_size: float,
     model_name: str,
     random_state: int,
     cv: int,
@@ -112,9 +119,10 @@ def train(
     tree_min_samples_split: Union[int, float],
     tree_min_samples_leaf: Union[int, float],
 ) -> None:
-    features, target = get_dataset(dataset_path, random_state)
     with mlflow.start_run():
         mlflow.log_param("git_rev_hash", get_git_revision_hash())
+        mlflow.log_param("data_size", data_size)
+        features, target = get_dataset(dataset_path, random_state, data_size)
         mlflow.log_param("model_name", model_name)
         if model_name == ModelName.knn.value:
             mlflow.log_param("knn_n_neighbors", knn_n_neighbors)
