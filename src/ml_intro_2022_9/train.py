@@ -135,7 +135,6 @@ def train(
                 max_samples=knn_max_samples,
                 max_features=knn_max_features,
             )
-            mlflow.log_param("n_neighbors", knn_n_neighbors)
         elif model_name == ModelName.tree.value:
             mlflow.log_param("n_estimators", n_estimators)
             mlflow.log_param("tree_max_depth", tree_max_depth)
