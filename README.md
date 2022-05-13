@@ -97,3 +97,6 @@ Full screenshot provided [here](docs/images/tox-full.png).
 
 ### Task 15
 Don't miss [Actions](https://github.com/Feosen/ml-intro-2022-9/actions), please.
+
+### Bonus Evaluation Selection
+![Kaggle result](docs/images/kaggle.png)
