@@ -7,6 +7,7 @@ authors = ["Feosen <iva588@yandex.ru>"]
 [tool.poetry.scripts]
 train = "ml_intro_2022_9.train:train"
 predict = "ml_intro_2022_9.predict:predict"
+inspect = "ml_intro_2022_9.inspect_model:inspect"
 eda = "ml_intro_2022_9.eda:create_eda"
 
 [tool.poetry.dependencies]
