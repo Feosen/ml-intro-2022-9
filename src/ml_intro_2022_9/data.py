@@ -20,3 +20,9 @@ def get_dataset(
             features, target, test_size=data_size, random_state=random_state
         )
     return features, target
+
+
+def get_test_dataset(csv_path: Path) -> pd.DataFrame:
+    dataset = pd.read_csv(csv_path, index_col="Id")
+    click.echo(f"Dataset shape: {dataset.shape}.")
+    return dataset
